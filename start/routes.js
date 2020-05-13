@@ -19,3 +19,13 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
+
+Route.post('/login','AuthController.login')
+Route.post('/logout','AuthController.logout').middleware(['auth:jwt'])
+
+Route.resource('/users','UserController').middleware(['auth:jwt'])
+
+Route.resource('/teachers','TeacherController').middleware(['auth:jwt'])
+
+Route.get('/users_unasigneds','UserController.users_unasigneds').middleware(['auth:jwt'])
+

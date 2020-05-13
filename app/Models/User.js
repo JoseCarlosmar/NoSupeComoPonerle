@@ -34,6 +34,16 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
+  static get store(){
+    return ['username','email','password','role_id']
+  }
+
+  static get update(){
+    return this.store
+  }
+  teacher(){
+    return this.hasOne('App/Models/Teacher')
+  }
 }
 
 module.exports = User

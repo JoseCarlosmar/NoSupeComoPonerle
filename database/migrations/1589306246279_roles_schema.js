@@ -8,6 +8,7 @@ class RolesSchema extends Schema {
     this.create('roles', (table) => {
       table.bigIncrements()
       table.string('name', 80).notNullable()
+      table.timestamps()
     })
   }
 

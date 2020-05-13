@@ -14,6 +14,7 @@ class TeachersSchema extends Schema {
       table.string('phone', 15)
       table.date('birthdate', 100)
       table.boolean('status').notNullable().default(true)
+      table.timestamps()
     })
   }
 

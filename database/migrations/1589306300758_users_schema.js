@@ -12,6 +12,7 @@ class UsersSchema extends Schema {
       table.string('password', 60).notNullable()
       table.boolean('status').notNullable().default(false)
       table.bigInteger('role_id').unsigned().references('id').inTable('roles')
+      table.timestamps()
     })
   }
 
