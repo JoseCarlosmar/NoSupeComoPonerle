@@ -25,6 +25,8 @@ Route.post('/logout','AuthController.logout').middleware(['auth:jwt'])
 
 Route.resource('/users','UserController').middleware(['auth:jwt'])
 
+Route.resource('/roles','RoleController').middleware(['auth:jwt']).only(['index'])
+
 Route.resource('/teachers','TeacherController').middleware(['auth:jwt'])
 
 Route.get('/users_unasigneds','UserController.users_unasigneds').middleware(['auth:jwt'])

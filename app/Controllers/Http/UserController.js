@@ -26,7 +26,7 @@ class UserController {
     }
 
     async users_unasigneds({response}){
-        const users = await User.query().doesntHave('teacher').fetch()
+        const users = await User.query().doesntHave('teacher').where('role_id', 2).fetch()
         return response.json(users)
     }
 }

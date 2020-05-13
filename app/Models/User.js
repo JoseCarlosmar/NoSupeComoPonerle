@@ -44,6 +44,10 @@ class User extends Model {
   teacher(){
     return this.hasOne('App/Models/Teacher')
   }
+
+  static get hidden() {
+    return ['password']
+  }
 }
 
 module.exports = User
