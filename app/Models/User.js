@@ -41,8 +41,13 @@ class User extends Model {
   static get update(){
     return this.store
   }
+
   teacher(){
     return this.hasOne('App/Models/Teacher')
+  }
+
+  role(){
+    return this.belongsTo('App/Models/Role')
   }
 
   static get hidden() {
