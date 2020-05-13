@@ -1,5 +1,7 @@
 'use strict'
 const Teacher = use('App/Models/Teacher')
+const Ws = use('Ws')
+
 class TeacherController {
     async index({response}){
         const teachers = await Teacher.all()
@@ -8,6 +10,10 @@ class TeacherController {
     async store({request,response}){
         const teacherData = request.only(Teacher.store)
         const teacher = await Teacher.create(teacherData)
+        const topic = Ws.getChannel("notification").topic('notification')
+        if (topic) {
+            topic.broadcast("new:notification", teacher)
+        }
         return response.ok(teacher)
     }
     async update({request,params,response}){
